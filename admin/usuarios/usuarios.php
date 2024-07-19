@@ -1,5 +1,4 @@
 <?php
-// archivo: gestion/usuarios/usuarios.php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../login.php");
@@ -33,6 +32,7 @@ $dependencias = $conn->query($sql_dep)->fetch_all(MYSQLI_ASSOC);
 // Obtener el mensaje de éxito si existe
 $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -94,7 +94,7 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
         .form-group label {
             display: block;
             margin-bottom: 5px;
-            flex: 0 0 48%;
+            width: 100%;
         }
 
         .form-group input[type="text"],
@@ -102,7 +102,7 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
         .form-group input[type="password"],
         .form-group input[type="date"],
         .form-group select {
-            width: 100%;
+            width: calc(100% - 10px);
             padding: 8px;
             box-sizing: border-box;
         }
@@ -190,8 +190,8 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
             margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Ajusta el tamaño del modal */
-            max-width: 800px;
+            width: 90%; /* Ajusta el tamaño del modal */
+            max-width: 1200px;
             text-align: center; /* Centra el contenido del modal */
             border-radius: 8px; /* Añade bordes redondeados */
         }
@@ -215,11 +215,15 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
         }
 
         .form-group div {
-            flex: 0 0 48%;
+            width: 48%;
+        }
+
+        .form-group.full-width div {
+            width: 100%;
         }
 
         .full-width {
-            flex: 0 0 100%;
+            width: 100%;
         }
 
         .search-container {
@@ -448,6 +452,7 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
         <div class="modal-contenido">
             <span class="cerrar" onclick="cerrarFormularioCrear()">&times;</span>
             <h2>Crear Usuario</h2>
+            <div class="espacio"></div>
             <form id="formCrearUsuario" action="crear_usuario.php" method="post">
                 <div class="form-group">
                     <div>
@@ -469,26 +474,26 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
                         <input type="text" id="celular" name="celular" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div>
-                        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
-                    </div>
-                </div>
-                <div class="form-group">
+                <div class="form-group full-width">
                     <div>
                         <label for="username">Usuario:</label>
                         <input type="text" id="username" name="username" required>
                     </div>
+                </div>
+                <div class="form-group">
                     <div>
                         <label for="password">Contraseña:</label>
                         <input type="password" id="password" name="password" required>
                     </div>
+                    <div>
+                        <label for="confirmar_password">Conf. Contra.:</label>
+                        <input type="password" id="confirmar_password" name="confirmar_password" required>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div>
-                        <label for="confirmar_password">Confirmar Contraseña:</label>
-                        <input type="password" id="confirmar_password" name="confirmar_password" required>
+                        <label for="fecha_nacimiento">F. Nacimiento:</label>
+                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
                     </div>
                     <div>
                         <label for="estado">Estado:</label>
@@ -543,12 +548,6 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
                 </div>
                 <div class="form-group">
                     <div>
-                        <label for="editar_fecha_nacimiento">Fecha de Nacimiento:</label>
-                        <input type="date" id="editar_fecha_nacimiento" name="fecha_nacimiento" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
                         <label for="editar_username">Usuario:</label>
                         <input type="text" id="editar_username" name="username" required>
                     </div>
@@ -559,7 +558,7 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
                 </div>
                 <div class="form-group">
                     <div>
-                        <label for="editar_confirmar_password">Confirmar Contraseña:</label>
+                        <label for="editar_confirmar_password">Conf. Contra.:</label>
                         <input type="password" id="editar_confirmar_password" name="confirmar_password">
                     </div>
                     <div>
@@ -594,14 +593,4 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
 

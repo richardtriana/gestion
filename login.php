@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - GESTOR DE ARCHIVOS</title>
+    <title>GESTOR DE ARCHIVOS</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -71,28 +71,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0, 0, 0, 0.4);
         }
         .modal-content {
-            background-color: #fefefe;
+            background: white;
             margin: 5% auto;
             padding: 40px;
-            border: 1px solid #888;
-            width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 400px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             animation: modalopen 0.5s;
+            text-align: center;
+            color: #333;
         }
         @keyframes modalopen {
             from {opacity: 0;}
             to {opacity: 1;}
         }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4ca1af;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #4ca1af;
+            margin-bottom: 20px;
+        }
         form {
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
         form label {
+            width: 100%;
+            text-align: left;
             margin-top: 10px;
         }
         form input[type="text"],
@@ -101,6 +116,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            width: 100%;
+            background: #fff;
+            color: #333;
+        }
+        form input[type="text"]:focus,
+        form input[type="password"]:focus {
+            outline: none;
+            border: 1px solid #4ca1af;
+            box-shadow: 0 0 10px #4ca1af;
         }
         form input[type="submit"] {
             background-color: #4ca1af;
@@ -111,6 +135,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             cursor: pointer;
             border-radius: 5px;
             font-size: 16px;
+            width: 100%;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
         form input[type="submit"]:hover {
             background-color: #2c3e50;
@@ -124,6 +150,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div id="loginModal" class="modal">
         <div class="modal-content">
+            <div class="title">GESTOR DE ARCHIVOS</div>
+            <div class="subtitle">Usuarios</div>
             <form method="post" action="login.php">
                 <label for="username">Usuario:</label>
                 <input type="text" id="username" name="username" required>
@@ -134,23 +162,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php if($error) { echo "<p class='error'>$error</p>"; } ?>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var modal = document.getElementById("loginModal");
-            var span = document.getElementsByClassName("close")[0];
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        });
-    </script>
 </body>
 </html>
-
-
-
-
-

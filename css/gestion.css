@@ -1,0 +1,144 @@
+/* gestion.css */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background: #4ca1af;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    flex: 1;
+}
+
+header form {
+    margin: 0;
+}
+
+header select {
+    padding: 5px;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    background: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+header a:hover {
+    background: #555;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.left-panel {
+    background: #fff;
+    padding: 20px;
+    width: 25%;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.right-panel {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+li:hover {
+    background: #f0f0f0;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+}
+
+li a:hover {
+    color: #4ca1af;
+}
+
+li i {
+    margin-right: 10px;
+    color: #FFA500; /* Color amarillo más oscuro para las carpetas */
+}
+
+.caret {
+    cursor: pointer;
+    user-select: none;
+    margin-right: 10px;
+}
+
+.caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.caret-down::before {
+    transform: rotate(90deg);
+}
+
+.nested {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.root > li > .nested {
+    display: block; /* Mostrar el primer nivel de sublistas por defecto */
+}
+
+.right-panel ul {
+    padding-left: 0;
+}
+
+
+
+
